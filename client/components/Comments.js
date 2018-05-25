@@ -33,9 +33,7 @@ class Comments extends Component {
           const comment = this.refs.comment.value;
           this.props.addComment(postId, author, comment);
           this.refs.commentForm.reset();
-        }}
-        >
-
+        }}>
          <input type="text" ref="author" placeholder="author"/>
          <input type="text" ref="comment" placeholder="comment"/>
          <input type="submit" hidden/>
