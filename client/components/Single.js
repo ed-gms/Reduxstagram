@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Photo from './Photo';
 import Comments from './Comments';
 
-class Single extends React.Component {
+class Single extends Component {
   render() {
     const { postId } = this.props.params;
     const i = this.props.posts.findIndex((post) => post.code === postId);

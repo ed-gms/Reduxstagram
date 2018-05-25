@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-class Photo extends React.Component {
+class Photo extends Component {
   render() {
     const { post, i, comments } = this.props;
     return (

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Photo from './Photo';
 
-class PhotoGrid extends React.Component {
+class PhotoGrid extends Component {
   render() {
     return (
       <div className="photo-grid">
