@@ -13,7 +13,7 @@ const defaultState = {
 };
 
 const enhancers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.devToolsExtension ? window.devToolsExtension() : (f) => f
 );
 
 const store = createStore(rootReducer, defaultState, enhancers);
