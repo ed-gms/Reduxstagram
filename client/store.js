@@ -1,9 +1,14 @@
-import { createStore, compose } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 
-//Imort the root reducers
+import createSagaMiddleware from 'redux-saga';
+
+import 'babel-polyfill';
+
+//Import the root reducers
 import rootReducer from './reducers/index'
+import mySaga from './sagas';
 
 import comments from './data/comments'
 import posts from './data/posts'
@@ -12,7 +17,7 @@ import posts from './data/posts'
 
 const defaultState = {
   posts,
-  comments
+  comments,
 }
 
 const enhancers = compose(
@@ -21,7 +26,17 @@ const enhancers = compose(
     (f) => f
 )
 
-const store = createStore(rootReducer, defaultState, enhancers)
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+// mount it on the Store
+const store = createStore(
+  rootReducer,
+  defaultState,
+  applyMiddleware(sagaMiddleware),
+  enhancers,
+)
+
+sagaMiddleware.run(mySaga);
 
 export const history = syncHistoryWithStore(browserHistory, store)
 
